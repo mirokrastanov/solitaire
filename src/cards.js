@@ -140,12 +140,14 @@ class Foundation extends Deck {
      * @param {Card | Card[]} cards 
      */
     canPlace(cards) {
-        if (!cards || Array.isArray(cards)) {
+        if (!cards || (Array.isArray(cards) && cards.length > 1)) {
             return false;
         }
-        return (cards.suit == this.suit &&
-            ((cards.face == faces.Ace && this.size == 0)
-                || (this.size > 0 && (cards.face - 1) == this.top.face)));
+
+        const card = Array.isArray(cards) ? cards[0] : cards;
+        return (card.suit == this.suit &&
+            ((card.face == faces.Ace && this.size == 0)
+                || (this.size > 0 && (card.face - 1) == this.top.face)));
     }
 }
 

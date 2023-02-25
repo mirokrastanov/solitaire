@@ -1,14 +1,3 @@
-import {
-    faces,
-    suits,
-    colors,
-    Card,
-    Deck,
-    Stock,
-    Waste,
-    Foundation,
-    Pile,
-} from './cards.js';
 import { createDeckElement } from './dom.js';
 import { createDeck, shuffleDeck, dealDeck } from './util.js';
 
@@ -126,7 +115,6 @@ function onClick(e) {
             case 'place':
                 const target = findDeck(type, index, suit);
                 const selectedCards = currentMove.source.take(currentMove.cardIndex);
-                
                 target.place(selectedCards);
                 currentMove = null;
                 break;

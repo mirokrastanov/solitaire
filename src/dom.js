@@ -34,6 +34,8 @@ function createDeckElement(deck, index) {
     if (deck.moves.flip || deck.moves.place || deck.moves.take.length > 0) {
         if (deck.size == 0 || deck.moves.place) {
             element.classList.add('active');
+        }
+        if (deck.moves.place) {
             element.dataset.action = 'place';
         } else if (deck.moves.flip) {
             element.dataset.action = 'flip';
@@ -57,7 +59,7 @@ function createDeckElement(deck, index) {
     }
 
     let cards = deck.cards;
-   
+
     // TODO
     // if (deck.size > 1 && (deck instanceof Stock || deck instanceof Waste || deck instanceof Foundation)) {
     //     const visibleCount = Math.ceil((deck.size - 1) / 5);
