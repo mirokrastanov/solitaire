@@ -23,11 +23,21 @@ const faces = {
 };
 
 /**
- * @param {import('./cards.js').Deck} deck
+ * @param {GameDeck} deck
  */
 function createDeckElement(deck, index) {
     const element = document.createElement('article');
     element.classList.add('deck');
+
+    let activeCards = false;
+
+    if (deck.moves.flip || deck.moves.place || deck.moves.take.length > 0) {
+        if (deck.size == 0 || deck.moves.place) {
+            element.classList.add('active');
+        } else {
+            activeCards = true;
+        }
+    }
 
     if (deck instanceof Stock) {
         element.dataset.type = 'stock';
@@ -48,11 +58,12 @@ function createDeckElement(deck, index) {
         cards.fill({ faceUp: false });
         cards.push(deck.top);
     }
-    
+
     for (let i = 0; i < cards.length; i++) {
         let card = cards[i];
         let top = i == cards.length - 1;
-        element.appendChild(createCard(card, top, i));
+        let active = activeCards && ((top && deck.canFlip()) || deck.canTake(i));
+        element.appendChild(createCard(card, top, i, active));
     }
 
     return element;
@@ -62,12 +73,15 @@ function createDeckElement(deck, index) {
  * @param {import('./cards.js').Card} card 
  * @param {boolean} top
  */
-function createCard(card, top, index) {
+function createCard(card, top, index, active) {
     const element = document.createElement('div');
     element.classList.add('card');
+    if (active) {
+        element.classList.add('active');
+    }
     element.dataset.index = index;
     let content = '';
-    
+
     if (card.faceUp) {
         element.classList.add(colors[card.suit]);
         content = `${suits[card.suit]}${faces[card.face]}`;
@@ -87,3 +101,5 @@ export {
     createDeckElement,
     createCard,
 }
+
+/** @typedef {import('./cards.js').Deck & {moves: {flip: boolean, take: number[], place: boolean}}} GameDeck */

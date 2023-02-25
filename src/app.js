@@ -45,11 +45,11 @@ start();
  */
 function getMoves(deck, cards) {
     return {
-        flip: deck.canFlip(),
-        take: deck.cards
+        flip: !cards && deck.canFlip(),
+        take: !cards && deck.cards
             .map((_, i) => deck.canTake(i)).map((v, i) => v && i)
             .filter(v => v !== false),
-        place: deck.canPlace(cards),
+        place: cards && deck.canPlace(cards),
     };
 }
 
