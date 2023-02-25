@@ -75,7 +75,20 @@ function dealDeck(deck) {
             index[12],
         ],
     };
+    // Uncomment below loop for easy win - good for testing
+    // let count = 0;
+    // for (let suit of Object.values(suits)) {
+    //     for (let face of Object.values(faces)) {
+    //         count++;
+    //         if (count == 52) {
+    //             break;
+    //         }
+    //         state.foundations[suit].cards.push(deck.cards.shift());
+    //         state.foundations[suit].top.faceUp = true;
+    //     }
+    // }
 
+    // Comment the below loop if you are testing the above method
     for (let i = 0; i < 7; i++) {
         const pile = state.piles[i];
         for (let j = 0; j <= i; j++) {

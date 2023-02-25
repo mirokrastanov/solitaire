@@ -21,6 +21,8 @@ document.getElementById('board').addEventListener('click', onClick);
 function start() {
     const deck = createDeck();
 
+
+    // Comment the 5 shufflers below + lines 79 - 89 in util.js
     shuffleDeck(deck);
     shuffleDeck(deck);
     shuffleDeck(deck);
