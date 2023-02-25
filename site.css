@@ -48,7 +48,7 @@ html {
 }
 
 #stock {
-    width: 165px;
+    width: 167px;
     display: flex;
     justify-content: space-between;
 }
@@ -62,7 +62,7 @@ html {
 }
 
 #foundation {
-    width: 345px;
+    width: 340px;
     display: flex;
     justify-content: space-between;
 }
@@ -110,8 +110,9 @@ html {
 }
 
 #top-board:has(.deck) {
-    height: 120px;
+    height: 175px;
 }
+
 #pile:has(.deck) {
     height: 165px;
 }
@@ -161,13 +162,16 @@ html {
 }
 
 .card.top {
+    position: relative;
     height: 90%;
     border: 1px solid black;
     border-radius: 8px;
     z-index: 2;
 }
+
 #stock article:nth-of-type(2) .card:not(.top) {
-    content-visibility: hidden;
+    position: relative;
+    z-index: 1;
 }
 
 .active {
