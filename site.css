@@ -122,11 +122,13 @@ html {
     height: 175px;
 }
 
-#pile .deck {
+#pile .deck,
+#stock .deck {
     min-height: 120px;
     height: fit-content;
 }
-#pile .deck .card:last-child {
+#pile .deck .card:last-child,
+#stock .deck .card:last-child {
     height: 90px;
 }
 
