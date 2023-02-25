@@ -21,6 +21,13 @@ const suits = {
     Spades: 'spades',
 }
 
+const colors = {
+    clubs: 'black',
+    diamonds: 'red',
+    hearts: 'red',
+    spades: 'black',
+}
+
 class Card {
     /** @type {keyof suits} */
     suit = null;
@@ -58,21 +65,16 @@ class Deck {
     get size() {
         return this.cards.length;
     }
-
     canFlip() {
         return this.size > 0 && this.top.faceUp == false;
     }
     canTake() {
         throw new TypeError('Cannot invoke abstract method');
-
     }
-
     /** @param {Card | Card[]} cards */  // Card or an array of Cards
     canPlace(cards) {
         throw new TypeError('Cannot invoke abstract method');
-
     }
-
     flip() {
         if (this.canFlip() == false) {
             throw new Error('Cannot flip card')
@@ -85,7 +87,6 @@ class Deck {
         }
         this.cards.splice(index, this.size - index);
     }
-
     /** @param {Card | Card[]} cards */  // Card or an array of Cards
     place(cards) {
         if (this.canPlace(cards) == false) {
@@ -142,5 +143,25 @@ class Foundation extends Deck {
         return (cards.suit == this.suit &&
             ((cards.face == faces.Ace && this.size == 0)
                 || (this.size > 0 && cards.face - 1 == this.top.face)));
+    }
+}
+
+class Pile extends Deck {
+    canTake(index) {
+        return this.size > 0 && this.cards[index].faceUp;
+    }
+    /**
+     * @param {Card | Card[]} cards 
+     */
+    canPlace(cards) {
+        if (Array.isArray(cards) == false) {
+            cards = [cards];
+        }
+        /** @type {Card} */
+        const bottomCard = cards[0];
+        return (cards.face == faces.King && this.size == 0)
+            || (this.size > 0
+                && bottomCard.face + 1 == this.top.face
+                && colors[bottomCard.suit] != colors[this.top.suit]);
     }
 }
