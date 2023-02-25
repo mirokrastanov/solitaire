@@ -18,6 +18,11 @@ const zones = {
     piles: document.getElementById('pile'),
 };
 
+/** @type {import('./util.js').GameState} */
+let state = null;
+/** @type {import('./cards.js').Deck[]} */
+let index = [];
+
 document.getElementById('board').addEventListener('click', onClick);
 
 function start() {
@@ -30,7 +35,7 @@ function start() {
     shuffleDeck(deck);
     console.log(deck);
 
-    const { index, state } = dealDeck(deck);
+    [index, state] = dealDeck(deck);
     console.log(index, state);
     index.forEach(deck => deck.moves = getMoves(deck));
 
@@ -88,13 +93,32 @@ function onClick(e) {
             suit = deck.dataset.suit;
         } else if (type == 'pile') {
             index = Number(deck.dataset.index);
-        } else if (type == '') {
-
-        } else if (type == '') {
-
+        } 
+        console.log(type, suit, index);
+        if (type == 'stock') {
+            flipStock();
+        } else if (type == 'pile') {
+            flipPile(index);
         }
 
-        console.log(type, suit, index);
+        stateToBoard(state);
     }
+}
 
+function flipStock() {
+    if (state.stock.size == 0) {
+        const cards = [...state.waste.cards];
+        state.waste.cards.length = 0;
+        cards.reverse();
+        cards.forEach(c => c.faceUp = false);
+        state.stock.cards.push(...cards);
+    } else {
+        state.stock.flip();
+        const card = state.stock.cards.pop();
+        state.waste.cards.push(card);
+    }
+}
+
+function flipPile(index) {
+    state.piles[index].flip();
 }
