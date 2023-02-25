@@ -49,10 +49,10 @@ function createDeckElement(deck, index) {
     } else if (deck instanceof Waste) {
         element.dataset.type = 'waste';
     } else if (deck instanceof Foundation) {
-        element.dataset.type = 'foundation';
+        element.dataset.type = 'foundations';
         element.dataset.suit = deck.suit;
     } else if (deck instanceof Pile) {
-        element.dataset.type = 'pile';
+        element.dataset.type = 'piles';
         element.dataset.index = index;
     }
 

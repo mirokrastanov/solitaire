@@ -93,10 +93,11 @@ function onClick(e) {
         let suit = '';
         let index = -1;
         let cardIndex = -1;
+        let cards = undefined;
 
-        if (type == 'foundation') {
+        if (type == 'foundations') {
             suit = deck.dataset.suit;
-        } else if (type == 'pile') {
+        } else if (type == 'piles') {
             index = Number(deck.dataset.index);
         }
         if (card != null) {
@@ -107,20 +108,45 @@ function onClick(e) {
             case 'flip':
                 if (type == 'stock') {
                     flipStock();
-                } else if (type == 'pile') {
+                } else if (type == 'piles') {
                     flipPile(index);
                 }
+                currentMove = null;
                 break;
             case 'take':
-
+                const tempDeck = findDeck(type, index, suit);
+                cards = tempDeck.cards.slice(cardIndex);
+                currentMove = {
+                    source: tempDeck,
+                    type,
+                    index,
+                    cardIndex,
+                };
+                break;
+            case 'place':
+                // TODO
+                currentMove = null;
                 break;
         }
 
+        console.log(action, type, suit, index, cardIndex);
+        console.log(currentMove);
 
-        deckIndex.forEach(deck => deck.moves = getMoves(deck));
+        deckIndex.forEach(deck => deck.moves = getMoves(deck, cards));
         stateToBoard(state);
-        console.log(type, suit, index, cardIndex, action);
     }
+}
+
+function findDeck(type, index, suit) {
+    let tempDeck = null;
+    if (type == 'piles') {
+        tempDeck = state[type][index];
+    } else if (type == 'foundations') {
+        tempDeck = state[type][suit];
+    } else {
+        tempDeck = state[type];
+    }
+    return tempDeck;
 }
 
 function flipStock() {
