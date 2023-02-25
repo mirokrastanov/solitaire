@@ -34,7 +34,12 @@ function createDeckElement(deck, index) {
     if (deck.moves.flip || deck.moves.place || deck.moves.take.length > 0) {
         if (deck.size == 0 || deck.moves.place) {
             element.classList.add('active');
-        } else {
+            element.dataset.action = 'place';
+        } else if (deck.moves.flip) {
+            element.dataset.action = 'flip';
+            activeCards = true;
+        } else if (deck.moves.take.length > 0) {
+            element.dataset.action = 'take';
             activeCards = true;
         }
     }
@@ -52,12 +57,14 @@ function createDeckElement(deck, index) {
     }
 
     let cards = deck.cards;
-    if (deck.size > 1 && (deck instanceof Stock || deck instanceof Waste || deck instanceof Foundation)) {
-        const visibleCount = Math.ceil((deck.size - 1) / 5);
-        cards = new Array(visibleCount);
-        cards.fill({ faceUp: false });
-        cards.push(deck.top);
-    }
+   
+    // TODO
+    // if (deck.size > 1 && (deck instanceof Stock || deck instanceof Waste || deck instanceof Foundation)) {
+    //     const visibleCount = Math.ceil((deck.size - 1) / 5);
+    //     cards = new Array(visibleCount);
+    //     cards.fill({ faceUp: false });
+    //     cards.push(deck.top);
+    // }
 
     for (let i = 0; i < cards.length; i++) {
         let card = cards[i];

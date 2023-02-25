@@ -21,7 +21,8 @@ const zones = {
 /** @type {import('./util.js').GameState} */
 let state = null;
 /** @type {import('./cards.js').Deck[]} */
-let index = [];
+let deckIndex = [];
+let currentMove = null;
 
 document.getElementById('board').addEventListener('click', onClick);
 
@@ -35,9 +36,9 @@ function start() {
     shuffleDeck(deck);
     console.log(deck);
 
-    [index, state] = dealDeck(deck);
-    console.log(index, state);
-    index.forEach(deck => deck.moves = getMoves(deck));
+    [deckIndex, state] = dealDeck(deck);
+    console.log(deckIndex, state);
+    deckIndex.forEach(deck => deck.moves = getMoves(deck));
 
     stateToBoard(state);
 }
@@ -76,32 +77,49 @@ function stateToBoard(state) {
 
 function onClick(e) {
     let deck = null;
+    let card = null;
     if (e.target.classList.contains('deck')) {
         deck = e.target;
     } else if (e.target.classList.contains('card')) {
+        card = e.target;
         deck = e.target.parentElement;
     } else if (e.target.classList.contains('back')) {
         deck = e.target.parentElement.parentElement;
     }
 
     if (deck != null) {
+        const action = deck.dataset.action;
         const type = deck.dataset.type;
         let suit = '';
         let index = -1;
+        let cardIndex = -1;
 
         if (type == 'foundation') {
             suit = deck.dataset.suit;
         } else if (type == 'pile') {
             index = Number(deck.dataset.index);
-        } 
-        console.log(type, suit, index);
-        if (type == 'stock') {
-            flipStock();
-        } else if (type == 'pile') {
-            flipPile(index);
+        }
+        if (card != null) {
+            cardIndex = Number(card.dataset.index);
         }
 
+        switch (action) {
+            case 'flip':
+                if (type == 'stock') {
+                    flipStock();
+                } else if (type == 'pile') {
+                    flipPile(index);
+                }
+                break;
+            case 'take':
+
+                break;
+        }
+
+
+        deckIndex.forEach(deck => deck.moves = getMoves(deck));
         stateToBoard(state);
+        console.log(type, suit, index, cardIndex, action);
     }
 }
 

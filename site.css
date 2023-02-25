@@ -125,10 +125,10 @@ html {
     border: 1px solid black;
     border-radius: 8px 8px 0px 0px;
     border-bottom: none;
-    z-index: 5;
     background-color: antiquewhite;
     padding: 1px 5px;
     margin: auto;
+    user-select: none;
 }
 
 /* .card:has(.back) {
@@ -164,7 +164,12 @@ html {
     height: 90%;
     border: 1px solid black;
     border-radius: 8px;
+    z-index: 2;
 }
+#stock article:nth-of-type(2) .card:not(.top) {
+    content-visibility: hidden;
+}
+
 .active {
     transition: all ease-in 0.2s;
 }
