@@ -13,6 +13,9 @@ let state = null;
 let deckIndex = [];
 let currentMove = null;
 
+document.getElementById('new-game').addEventListener('click', (e) => {
+    window.location.reload();
+});
 document.getElementById('board').addEventListener('click', onClick);
 
 function start() {
