@@ -159,10 +159,9 @@ class Pile extends Deck {
         }
         /** @type {Card} */
         const bottomCard = cards[0];
-        return (cards.face == faces.King && this.size == 0)
-            || (this.size > 0
-                && bottomCard.face + 1 == this.top.face
-                && colors[bottomCard.suit] != colors[this.top.suit]);
+        return (bottomCard.face == faces.King && this.size == 0) ||
+            (this.size > 0 && bottomCard.face + 1 == this.top.face &&
+                colors[bottomCard.suit] != colors[this.top.suit]);
     }
 }
 

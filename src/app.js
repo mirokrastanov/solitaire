@@ -9,13 +9,19 @@ import {
     Foundation,
     Pile,
 } from './cards.js';
+import { createDeckElement } from './dom.js';
 import { createDeck, shuffleDeck, dealDeck } from './util.js';
+
+const zones = {
+    stock: document.getElementById('stock'),
+    foundations: document.getElementById('foundation'),
+    piles: document.getElementById('pile'),
+};
 
 
 function start() {
-    
     const deck = createDeck();
-    console.log(deck);
+
     shuffleDeck(deck);
     shuffleDeck(deck);
     shuffleDeck(deck);
@@ -23,7 +29,20 @@ function start() {
     shuffleDeck(deck);
     console.log(deck);
     
-    const state = dealDeck(deck);
-    console.log(state);
+    const { index, state } = dealDeck(deck);
+    console.log(index, state);
+    stateToBoard(state);
 }
 start();
+
+
+/**
+ * 
+ * @param {import('./util.js').GameState} state 
+ */
+function stateToBoard(state) {
+    zones.stock.replaceChildren(
+        createDeckElement(state.stock),
+        createDeckElement(state.waste),
+    );
+}
