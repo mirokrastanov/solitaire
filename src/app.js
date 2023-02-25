@@ -18,6 +18,7 @@ const zones = {
     piles: document.getElementById('pile'),
 };
 
+zones.stock.addEventListener('click', onClick);
 
 function start() {
     const deck = createDeck();
@@ -50,4 +51,8 @@ function stateToBoard(state) {
             .map(createDeckElement));
     zones.piles.replaceChildren(...state.piles.map(createDeckElement));
 
+}
+
+function onClick(e) {
+    
 }
