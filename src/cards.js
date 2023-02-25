@@ -101,6 +101,9 @@ class Deck {
 
 
 class Stock extends Deck {
+    canFlip() {
+        return true;
+    }
     canTake() {
         return false;
     }
