@@ -18,7 +18,7 @@ const zones = {
     piles: document.getElementById('pile'),
 };
 
-zones.stock.addEventListener('click', onClick);
+document.getElementById('board').addEventListener('click', onClick);
 
 function start() {
     const deck = createDeck();
@@ -36,6 +36,20 @@ function start() {
 }
 start();
 
+/**
+ * 
+ * @param {import('./cards.js').Deck} deck 
+ * @param {import('./cards.js').Card | import('./cards.js').Card[] | null} card 
+ */
+function getMoves(deck, cards) {
+    return {
+        flip: deck.canFlip(),
+        take: deck.cards
+            .map((_, i) => deck.canTake(i).map((v, i) => v && i))
+            .filter(v => v !== false),
+        place: deck.canPlace(cards),
+    };
+}
 
 /**
  * 
@@ -54,5 +68,31 @@ function stateToBoard(state) {
 }
 
 function onClick(e) {
-    
+    let deck = null;
+    if (e.target.classList.contains('deck')) {
+        deck = e.target;
+    } else if (e.target.classList.contains('card')) {
+        deck = e.target.parentElement;
+    } else if (e.target.classList.contains('back')) {
+        deck = e.target.parentElement.parentElement;
+    }
+
+    if (deck != null) {
+        const type = deck.dataset.type;
+        let suit = '';
+        let index = -1;
+
+        if (type == 'foundation') {
+            suit = deck.dataset.suit;
+        } else if (type == 'pile') {
+            index = Number(deck.dataset.index);
+        } else if (type == '') {
+
+        } else if (type == '') {
+
+        }
+
+        console.log(type, suit, index);
+    }
+
 }

@@ -52,7 +52,7 @@ function createDeckElement(deck, index) {
     for (let i = 0; i < cards.length; i++) {
         let card = cards[i];
         let top = i == cards.length - 1;
-        element.appendChild(createCard(card, top));
+        element.appendChild(createCard(card, top, i));
     }
 
     return element;
@@ -62,9 +62,10 @@ function createDeckElement(deck, index) {
  * @param {import('./cards.js').Card} card 
  * @param {boolean} top
  */
-function createCard(card, top) {
+function createCard(card, top, index) {
     const element = document.createElement('div');
     element.classList.add('card');
+    element.dataset.index = index;
     let content = '';
     
     if (card.faceUp) {
