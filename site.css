@@ -56,6 +56,9 @@ html {
 #stock .card:not(.top) {
     height: 2px;
 }
+#pile .card:not(.top) {
+    height: 10px;
+}
 
 #foundation {
     width: 345px;
@@ -118,11 +121,19 @@ html {
     margin: auto;
 }
 
-.card.back {
-    background-image: url('/images/card-background-2.png');
+/* .card:has(.back) {
     height: 90px;
+} */
+
+.back {
+    display: block;
+    height: 90%;
+    margin-top: 4px;
+    /* background-image: url('/images/card-background-3.png'); */
+    background: rgb(131, 58, 180);
+    background: linear-gradient(90deg, rgba(131, 58, 180, 1) 0%, rgba(253, 29, 29, 1) 50%, rgba(252, 176, 69, 1) 100%);
     border: 1px solid black;
-    border-radius: 8px;
+    border-radius: 8px 8px 0px 0px;
 }
 
 .red {
@@ -137,5 +148,5 @@ html {
     height: 90px;
     border: 1px solid black;
     border-radius: 8px;
-    
+
 }

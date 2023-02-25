@@ -28,7 +28,7 @@ function start() {
     shuffleDeck(deck);
     shuffleDeck(deck);
     console.log(deck);
-    
+
     const { index, state } = dealDeck(deck);
     console.log(index, state);
     stateToBoard(state);
@@ -45,4 +45,9 @@ function stateToBoard(state) {
         createDeckElement(state.stock),
         createDeckElement(state.waste),
     );
+    zones.foundations
+        .replaceChildren(...Object.values(state.foundations)
+            .map(createDeckElement));
+    zones.piles.replaceChildren(...state.piles.map(createDeckElement));
+
 }
