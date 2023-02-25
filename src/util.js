@@ -81,7 +81,7 @@ function dealDeck(deck) {
         for (let j = 0; j <= i; j++) {
             pile.cards.push(deck.cards.pop());
         }
-        // pile.top.faceUp = true;
+        pile.top.faceUp = true;
     }
 
     state.stock.cards.push(...deck.cards);

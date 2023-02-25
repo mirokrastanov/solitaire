@@ -85,7 +85,7 @@ class Deck {
         if (this.canTake(index) == false) {
             throw new Error('Cannot take from waste');
         }
-        this.cards.splice(index, this.size - index);
+        return this.cards.splice(index, this.size - index);
     }
     /** @param {Card | Card[]} cards */  // Card or an array of Cards
     place(cards) {

@@ -17,7 +17,7 @@ html {
     grid-template-areas:
         'top'
         'bottom';
-    row-gap: 20px;
+    row-gap: 0px;
     margin: 20px;
     padding: 20px;
     border-radius: 15px;
@@ -58,7 +58,7 @@ html {
 }
 
 #pile .card:not(.top) {
-    height: 10px;
+    height: 20px;
 }
 
 #foundation {
@@ -114,7 +114,7 @@ html {
 }
 
 #pile:has(.deck) {
-    height: 165px;
+    height: 245px;
 }
 
 .card {

@@ -124,13 +124,16 @@ function onClick(e) {
                 };
                 break;
             case 'place':
-                // TODO
+                const target = findDeck(type, index, suit);
+                const selectedCards = currentMove.source.take(currentMove.cardIndex);
+                
+                target.place(selectedCards);
                 currentMove = null;
                 break;
         }
 
-        console.log(action, type, suit, index, cardIndex);
-        console.log(currentMove);
+        // console.log(action, type, suit, index, cardIndex);
+        // console.log(currentMove);
 
         deckIndex.forEach(deck => deck.moves = getMoves(deck, cards));
         stateToBoard(state);
