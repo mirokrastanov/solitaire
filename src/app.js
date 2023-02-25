@@ -32,6 +32,8 @@ function start() {
 
     const { index, state } = dealDeck(deck);
     console.log(index, state);
+    index.forEach(deck => deck.moves = getMoves(deck));
+
     stateToBoard(state);
 }
 start();
@@ -45,7 +47,7 @@ function getMoves(deck, cards) {
     return {
         flip: deck.canFlip(),
         take: deck.cards
-            .map((_, i) => deck.canTake(i).map((v, i) => v && i))
+            .map((_, i) => deck.canTake(i)).map((v, i) => v && i)
             .filter(v => v !== false),
         place: deck.canPlace(cards),
     };

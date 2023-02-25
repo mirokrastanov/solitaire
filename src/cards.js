@@ -137,12 +137,12 @@ class Foundation extends Deck {
      * @param {Card | Card[]} cards 
      */
     canPlace(cards) {
-        if (Array.isArray(cards)) {
+        if (!cards || Array.isArray(cards)) {
             return false;
         }
         return (cards.suit == this.suit &&
             ((cards.face == faces.Ace && this.size == 0)
-                || (this.size > 0 && cards.face - 1 == this.top.face)));
+                || (this.size > 0 && (cards.face - 1) == this.top.face)));
     }
 }
 
@@ -154,7 +154,10 @@ class Pile extends Deck {
      * @param {Card | Card[]} cards 
      */
     canPlace(cards) {
-        if (!cards || Array.isArray(cards) == false) {
+        if (!cards) {
+            return false;
+        }
+        if (Array.isArray(cards) == false) {
             cards = [cards];
         }
         /** @type {Card} */
