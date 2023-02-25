@@ -15,7 +15,7 @@ const faces = {
 };
 
 const suits = {
-    Cluis: 'clubs',
+    Clubs: 'clubs',
     Diamonds: 'diamonds',
     Hearts: 'hearts',
     Spades: 'spades',
@@ -54,7 +54,7 @@ class Deck {
     cards = [];
     /** @param {Card[]?} cards */  // same here
     constructor(cards) {
-        this.cards = cards;
+        this.cards = cards ? cards : [];
     }
     get top() {
         return this.cards[this.topIndex];
@@ -164,4 +164,16 @@ class Pile extends Deck {
                 && bottomCard.face + 1 == this.top.face
                 && colors[bottomCard.suit] != colors[this.top.suit]);
     }
+}
+
+export {
+    faces,
+    suits,
+    colors,
+    Card,
+    Deck,
+    Stock,
+    Waste,
+    Foundation,
+    Pile,
 }
