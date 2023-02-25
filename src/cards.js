@@ -1,7 +1,40 @@
-class Card {
-    suit = null;
-    face = null;
+const faces = {
+    Ace: 1,
+    Two: 2,
+    Three: 3,
+    Four: 4,
+    Five: 5,
+    Six: 6,
+    Seven: 7,
+    Eight: 8,
+    Nine: 9,
+    Ten: 10,
+    Jack: 11,
+    Queen: 12,
+    King: 13,
+};
 
+const suits = {
+    Cluis: 'clubs',
+    Diamonds: 'diamonds',
+    Hearts: 'hearts',
+    Spades: 'spades',
+}
+
+class Card {
+    /** @type {keyof suits} */
+    suit = null;
+    /** @type {keyof faces} */
+    face = null;
+    /** @type {boolean} */
+    faceUp = false;
+
+    /**
+     * 
+     * @param {keyof suits} suit 
+     * @param {keyof faces} face 
+     * @param {boolean} faceUp 
+     */
     constructor(suit, face, faceUp = false) {
         this.suit = suit;
         this.face = face;
@@ -12,13 +45,22 @@ class Card {
 class Deck {
     /** @type {Card[]} */  // helps intelisense identify this as an array of items originating from class Card
     cards = [];
-
     /** @param {Card[]?} cards */  // same here
     constructor(cards) {
         this.cards = cards;
     }
+    get top() {
+        return this.cards[this.topIndex];
+    }
+    get topIndex() {
+        return this.size - 1;
+    }
+    get size() {
+        return this.cards.length;
+    }
+
     canFlip() {
-        throw new TypeError('Cannot invoke abstract method');
+        return this.size > 0 && this.top.faceUp == false;
     }
     canTake() {
         throw new TypeError('Cannot invoke abstract method');
@@ -32,15 +74,73 @@ class Deck {
     }
 
     flip() {
-        throw new TypeError('Cannot invoke abstract method');
-
+        if (this.canFlip() == false) {
+            throw new Error('Cannot flip card')
+        }
+        this.top.faceUp = true;
     }
     take(index) {
-        throw new TypeError('Cannot invoke abstract method');
-
+        if (this.canTake(index) == false) {
+            throw new Error('Cannot take from waste');
+        }
+        this.cards.splice(index, this.size - index);
     }
-    place(cards) {
-        throw new TypeError('Cannot invoke abstract method');
 
+    /** @param {Card | Card[]} cards */  // Card or an array of Cards
+    place(cards) {
+        if (this.canPlace(cards) == false) {
+            throw new Error('Cannot place cards');
+        }
+        if (Array.isArray(cards) == false) {
+            cards = [cards];
+        }
+        this.cards.push(...cards);
+    }
+}
+
+
+class Stock extends Deck {
+    canTake() {
+        return false;
+    }
+    canPlace(cards) {
+        return false;
+    }
+}
+
+class Waste extends Deck {
+    canTake(index) {
+        return this.size > 0 && index == this.topIndex;
+    }
+    canPlace(cards) {
+        return false;
+    }
+}
+
+class Foundation extends Deck {
+    /** @type {keyof suits} */
+    suit = null;
+    /**
+     * @param {Card[]?} cards 
+     * @param {keyof suits} suit 
+     */
+    constructor(cards, suit) {
+        super(cards);
+        this.suit = suit;
+    }
+
+    canTake(index) {
+        return this.size > 0 && index == this.topIndex;
+    }
+    /**
+     * @param {Card | Card[]} cards 
+     */
+    canPlace(cards) {
+        if (Array.isArray(cards)) {
+            return false;
+        }
+        return (cards.suit == this.suit &&
+            ((cards.face == faces.Ace && this.size == 0)
+                || (this.size > 0 && cards.face - 1 == this.top.face)));
     }
 }
