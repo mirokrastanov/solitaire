@@ -62,6 +62,17 @@ function stateToBoard(state) {
         createDeckElement(state.stock),
         createDeckElement(state.waste),
     );
+    let stockCounter = zones.stock.querySelectorAll('article:nth-of-type(1) .card').length;
+    let wasteCounter = state.waste.cards.length;
+    let stockCounterElement = document.createElement('p');
+    stockCounterElement.setAttribute('id', 'stock-counter');
+    stockCounterElement.textContent = stockCounter;
+    document.querySelector('#top-board #stock').appendChild(stockCounterElement);
+    let wasteCounterElement = document.createElement('p');
+    wasteCounterElement.setAttribute('id', 'waste-counter');
+    wasteCounterElement.textContent = wasteCounter;
+    document.querySelector('#top-board #stock').appendChild(wasteCounterElement);
+
     zones.foundations
         .replaceChildren(...Object.values(state.foundations)
             .map(createDeckElement));

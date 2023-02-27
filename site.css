@@ -12,7 +12,7 @@ html {
 #board {
     width: fit-content;
     display: grid;
-    grid-template-rows: 175px auto;
+    grid-template-rows: 195px auto;
     grid-template-columns: repeat(1, 630px);
     grid-template-areas:
         'top'
@@ -43,13 +43,14 @@ html {
     display: flex;
     justify-content: space-between;
     width: 95%;
-    margin: 0px auto;
+    margin: 20px auto;
 }
 
 #stock {
     width: 167px;
     display: flex;
     justify-content: space-between;
+    position: relative;
 }
 
 #stock .card:not(.top) {
@@ -340,4 +341,19 @@ html {
         letter-spacing: 1rem;
         filter: drop-shadow(2px 7px #000000);
     }
+}
+
+
+#stock-counter {
+    position: absolute;
+    left: 30px;
+    top: -30px;
+    font-size: 22px;
+}
+
+#waste-counter {
+    position: absolute;
+    top: -30px;
+    right: 30px;
+    font-size: 22px;
 }
