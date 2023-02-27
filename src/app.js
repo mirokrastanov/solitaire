@@ -22,7 +22,7 @@ function start() {
     const deck = createDeck();
 
 
-    // Comment the 5 shufflers below + lines 79 - 89 in util.js
+    // Comment the 5 shufflers below + lines 79 - 89 in util.js for testing/easy win
     shuffleDeck(deck);
     shuffleDeck(deck);
     shuffleDeck(deck);
