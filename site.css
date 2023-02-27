@@ -41,9 +41,9 @@ html {
 #top-board {
     grid-area: top;
     display: flex;
+    justify-content: space-between;
     width: 95%;
     margin: 0px auto;
-    justify-content: space-between;
 }
 
 #stock {
@@ -123,12 +123,14 @@ html {
 }
 
 #pile .deck,
-#stock .deck {
+#stock .deck,
+#foundation .deck {
     min-height: 120px;
     height: fit-content;
 }
 #pile .deck .card:last-child,
-#stock .deck .card:last-child {
+#stock .deck .card:last-child,
+#foundation .deck .card:last-child {
     height: 90px;
 }
 
