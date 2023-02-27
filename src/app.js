@@ -80,6 +80,7 @@ function stateToBoard(state) {
             .map(createDeckElement));
     zones.piles.replaceChildren(...state.piles.map(createDeckElement));
 
+    // winning screen
     if (Object.values(state.foundations).every(f => f.size == 13)) {
         // setTimeout(() => alert('You Won!'), 0);
         setTimeout(() => {
