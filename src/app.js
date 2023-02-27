@@ -16,6 +16,9 @@ let currentMove = null;
 document.getElementById('new-game').addEventListener('click', (e) => {
     window.location.reload();
 });
+document.getElementById('new-tab').addEventListener('click', (e) => {
+    window.open('https://solitaire.mirokrastanov.repl.co/', '_blank');
+});
 document.getElementById('board').addEventListener('click', onClick);
 
 function start() {
