@@ -68,7 +68,15 @@ function stateToBoard(state) {
     zones.piles.replaceChildren(...state.piles.map(createDeckElement));
 
     if (Object.values(state.foundations).every(f => f.size == 13)) {
-        setTimeout(() => alert('You Won!'), 0);
+        // setTimeout(() => alert('You Won!'), 0);
+        setTimeout(() => {
+            let boardElement = document.querySelector('#board');
+            boardElement.innerHTML = '';
+            let h1 = document.createElement('h1');
+            h1.textContent = 'You won!!!';
+            h1.classList.add('you-won');
+            boardElement.appendChild(h1);
+        }, 0);
     }
 }
 
