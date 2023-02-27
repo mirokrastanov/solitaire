@@ -62,6 +62,8 @@ function stateToBoard(state) {
         createDeckElement(state.stock),
         createDeckElement(state.waste),
     );
+
+    // the below 10 lines can be commented out to remove the 2 counters
     let stockCounter = zones.stock.querySelectorAll('article:nth-of-type(1) .card').length;
     let wasteCounter = state.waste.cards.length;
     let stockCounterElement = document.createElement('p');
