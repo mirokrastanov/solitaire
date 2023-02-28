@@ -15,29 +15,28 @@ A JavaScript implementation of the popular game - "Solitaire".
 
 
 ## How to play
-- in progress...
-<!--
-  - `rock` or `r`
-  - `paper` or `p`
-  - `scissors` or `s` <br />
+1. Read the rules above.
+2. Click on a card you would like to move.
+3. If there are no possible valid moves use the stock to reveal an extra card.
+4. If the stock is empty, but there are still cards in the waste - click on the empty stock and it willo automatically move the cards in the waste to the stock again.
+5. Hover* over the spot you would like to place a card and click again to do so.
+6. Fill the 4 foundations with the cards from Ace to King, sequentially and you win. 
 
-The computer chooses a <b>random option</b>, then the <b>winner</b> is revealed.
+* When hovering over the correct pile/card you will receive visual hints confirming you are correct and you can do the move you want. The hints include a little zoom, a color change or both. 
+* You would also receive a visual highlight upon selecting a card as well. After you click to select the card you want to move, this highlight would be replaced with the above helping effect, automatically.
 
-## Game Logic | Possible Scenarios
+- For more information on how to play the game please read the above section - #Rules.
+
+## Game Screenshots
+<p align="center"><img src="https://raw.githubusercontent.com/mirokrastanov/solitaire/main/images/game-02.png"  height="500px" alt="board-image" title="Game board image" /></p>
+<p align="center"><img src="https://raw.githubusercontent.com/mirokrastanov/solitaire/main/images/game-03.png"  height="500px" alt="board-image" title="Game board image" /></p>
+<p align="center"><img src="https://raw.githubusercontent.com/mirokrastanov/solitaire/main/images/game-04.png"  height="500px" alt="board-image" title="Game board image" /></p>
+<p align="center"><img src="https://raw.githubusercontent.com/mirokrastanov/solitaire/main/images/game-05.png"  height="500px" alt="board-image" title="Game board image" /></p>
+<p align="center"><img src="https://raw.githubusercontent.com/mirokrastanov/solitaire/main/images/game-06.png" alt="board-image" title="Game board image" /></p>
+<p align="center"><img src="https://raw.githubusercontent.com/mirokrastanov/solitaire/main/images/game-07.png" alt="board-image" title="Game board image" /></p>
+
   
-|YOU|COMPUTER|OUTCOME|
-| :--: | :--: | :--: |
-|rock|rock|Draw|
-|rock|paper|You lose|
-|rock|scissors|You win|
-|paper|rock|You win|
-|paper|paper|Draw|
-|paper|scissors|You lose|
-|scissors|rock|You lose|
-|scissors|paper|You win|
-|scissors|scissors|Draw|
-  
--->  
+
 ## Live Demo
 [<img src="https://freepngimg.com/download/play_now_button/25403-5-play-now-button-transparent.png" alt="run-button" height="40px" />](https://solitaire.mirokrastanov.repl.co/)
   
