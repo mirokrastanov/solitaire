@@ -1,6 +1,6 @@
 # Solitaire
-A JavaScript implementation of the popular game - "Solitaire".
-<p align="center"><a href="https://solitaire.mirokrastanov.repl.co/"><img src="https://raw.githubusercontent.com/mirokrastanov/solitaire/main/images/solitaire-image.webp" height="500px"></a></p>
+A JavaScript implementation of the popular game - "<a href="https://en.wikipedia.org/wiki/Solitaire">Solitaire</a>".
+<p align="center"><a href="https://solitaire.mirokrastanov.repl.co/"><img src="https://raw.githubusercontent.com/mirokrastanov/solitaire/main/images/solitaire-image.webp" height="300px"></a></p>
 
 ## Description
 <a href="https://en.wikipedia.org/wiki/Solitaire">Solitaire</a> is a single player tabletop card game which involves placing cards in a layout, and sorting them according to specific rules.
@@ -28,10 +28,10 @@ A JavaScript implementation of the popular game - "Solitaire".
 - For more information on how to play the game please read the above section - #Rules.
 
 ## Game Screenshots
-<p align="center"><img src="https://raw.githubusercontent.com/mirokrastanov/solitaire/main/images/game-02.png"  height="500px" alt="board-image" title="Game board image" /></p>
-<p align="center"><img src="https://raw.githubusercontent.com/mirokrastanov/solitaire/main/images/game-03.png"  height="500px" alt="board-image" title="Game board image" /></p>
-<p align="center"><img src="https://raw.githubusercontent.com/mirokrastanov/solitaire/main/images/game-04.png"  height="500px" alt="board-image" title="Game board image" /></p>
-<p align="center"><img src="https://raw.githubusercontent.com/mirokrastanov/solitaire/main/images/game-05.png"  height="500px" alt="board-image" title="Game board image" /></p>
+<p align="center"><img src="https://raw.githubusercontent.com/mirokrastanov/solitaire/main/images/game-02.png" alt="board-image" title="Game board image" /></p>
+<p align="center"><img src="https://raw.githubusercontent.com/mirokrastanov/solitaire/main/images/game-03.png" alt="board-image" title="Game board image" /></p>
+<p align="center"><img src="https://raw.githubusercontent.com/mirokrastanov/solitaire/main/images/game-04.png" alt="board-image" title="Game board image" /></p>
+<p align="center"><img src="https://raw.githubusercontent.com/mirokrastanov/solitaire/main/images/game-05.png" alt="board-image" title="Game board image" /></p>
 <p align="center"><img src="https://raw.githubusercontent.com/mirokrastanov/solitaire/main/images/game-06.png" alt="board-image" title="Game board image" /></p>
 <p align="center"><img src="https://raw.githubusercontent.com/mirokrastanov/solitaire/main/images/game-07.png" alt="board-image" title="Game board image" /></p>
 
