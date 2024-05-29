@@ -1,6 +1,11 @@
 # Solitaire
 A JavaScript implementation of the popular game - "<a href="https://en.wikipedia.org/wiki/Solitaire">Solitaire</a>".
-<p align="center"><a href="https://solitaire.mirokrastanov.repl.co/"><img src="https://raw.githubusercontent.com/mirokrastanov/solitaire/main/images/solitaire-image.webp" height="300px"></a></p>
+<p align="center"><a href="https://solitaire-miro.glitch.me/"><img src="https://raw.githubusercontent.com/mirokrastanov/solitaire/main/images/solitaire-image.webp" height="300px"></a></p>
+
+## Live Demo
+[<img src="https://freepngimg.com/download/play_now_button/25403-5-play-now-button-transparent.png" alt="run-button" height="40px" />](https://solitaire-miro.glitch.me/)
+### The Demo is also available in my app library 
+- Check out the [App Library](https://app-library-13e36.web.app/)
 
 ## Description
 <a href="https://en.wikipedia.org/wiki/Solitaire">Solitaire</a> is a single player tabletop card game which involves placing cards in a layout, and sorting them according to specific rules.
@@ -38,7 +43,7 @@ A JavaScript implementation of the popular game - "<a href="https://en.wikipedia
   
 
 ## Live Demo
-[<img src="https://freepngimg.com/download/play_now_button/25403-5-play-now-button-transparent.png" alt="run-button" height="40px" />](https://solitaire.mirokrastanov.repl.co/)
+[<img src="https://freepngimg.com/download/play_now_button/25403-5-play-now-button-transparent.png" alt="run-button" height="40px" />](https://solitaire-miro.glitch.me/)
   
   
 ## [Source Code](https://github.com/mirokrastanov/solitaire/tree/main/src)
